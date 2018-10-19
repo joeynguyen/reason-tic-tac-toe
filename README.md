@@ -4,4 +4,7 @@ The tutorial for this repo is at - https://medium.freecodecamp.org/learn-reasonm
 
 `npm start`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) by running
+
+`npx create-react-app reason-tic-tac-toe --scripts-version reason-scripts`
+
