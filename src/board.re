@@ -11,7 +11,7 @@ let setStatus = (gameState: gameState) =>
 
 let component = ReasonReact.statelessComponent("Board");
 
-let make = (~state: state, _children) => {
+let make = (~state: state, ~onMark, ~onRestart, _children) => {
   ...component,
   render: _ =>
     <div className="game-board">
@@ -22,6 +22,7 @@ let make = (~state: state, _children) => {
             <BoardRow
               key=(string_of_int(index))
               gameState=state.gameState
+              onMark
               row
               index
             />
@@ -32,5 +33,15 @@ let make = (~state: state, _children) => {
       <div className="status">
         (state.gameState |> setStatus |> ReasonReact.string)
       </div>
+      (
+        /* if game is game complete, show "Restart" button */
+        switch(state.gameState) {
+          | Playing(_) => ReasonReact.null
+          | _ =>
+              <button className="restart" onClick=onRestart >
+                (ReasonReact.string("Restart"))
+              </button>
+        }
+      )
     </div>
 }

@@ -21,13 +21,14 @@ let toValue = (field: field) =>
 
 let component = ReasonReact.statelessComponent("Square");
 
-let make = (~value: field, ~gameState: gameState, _children) => {
+let make = (~value: field, ~gameState: gameState, ~onMark, _children) => {
   ...component,
   render: _self =>
     <button
       className=(getClass(gameState, value))
-      disabled=(gameState |> isFinished)>
-      /* onClick=(_evt => onMark())> */
+      disabled=(gameState |> isFinished)
+      onClick=(_evt => onMark())
+    >
       (value |> toValue |> ReasonReact.string)
     </button>,
 };

@@ -35,6 +35,8 @@ let make = _children => {
     <div className="game">
       <Board
         state=self.state
+        onMark=(id => self.send(ClickSquare(id)))
+        onRestart=(_evt => self.send(Restart))
       />
     </div>
 }
